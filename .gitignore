@@ -1,0 +1,29 @@
+# Data files (large files - do not upload)
+data/raw/
+data/processed/
+*.gz
+*.vcf
+
+# Model files (large binary files)
+results/models/*.pkl
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Exports
+exports/
