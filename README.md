@@ -1,55 +1,82 @@
-# Explainable Multi-Omics CNA Prioritization in Breast Cancer
+# 🧬 Explainable Multi-Omics ML for Breast Cancer CNA Prioritization
 
-An integrated machine learning framework that combines **CNA**, **RNA-seq**, and **DNA methylation** data to prioritize functionally important copy number alterations in breast cancer.
+An **explainable multi-omics machine learning framework** for prioritizing potentially functionally important Copy Number Alterations (CNAs) in breast cancer.
 
-![Python](https://img.shields.io/badge/Python-3.9+-blue)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-orange)
-![SHAP](https://img.shields.io/badge/SHAP-0.42+-purple)
+The project integrates **CNA, RNA-seq gene expression, and DNA methylation** data from TCGA-BRCA and uses machine learning with SHAP explainability to generate a **Functional Importance Score (FIS)** for candidate genes.
 
----
+## 🔬 Key Features
 
-## 🧬 What This Project Does
+- Multi-omics integration of **CNA + RNA-seq + DNA methylation**
+- **42 engineered biological and statistical features**
+- Random Forest, XGBoost, and LightGBM models
+- Soft-voting ensemble model
+- Functional Importance Score (**FIS**) for gene prioritization
+- SHAP-based model explainability
+- ClinVar-based reference validation
+- Interactive Streamlit dashboard
 
-Breast cancer genomes have thousands of copy number alterations (CNAs), but only some actually drive cancer. This framework:
+## 📊 Results
 
-- Integrates **3 omics layers**: CNA + RNA-seq + Methylation
-- Engineers **42 features** from TCGA-BRCA data
-- Trains **4 ML models**: Random Forest, XGBoost, LightGBM, Ensemble
-- Generates a **Functional Importance Score (FIS)** for each gene
-- Explains predictions using **SHAP**
+| Model | Accuracy | F1-Score | AUC-ROC |
+|---|---:|---:|---:|
+| Random Forest | 66.2% | 32.6% | 0.599 |
+| XGBoost | 62.0% | 37.0% | 0.597 |
+| LightGBM | 62.0% | 35.6% | 0.588 |
+| **Ensemble** | **64.1%** | **36.3%** | **0.600** |
 
----
+**Dataset:** 779 common TCGA-BRCA samples  
+**Common genes:** 16,162  
+**Features:** 42
 
-## 📊 Results at a Glance
+### 🧠 Top SHAP Features
 
-| Metric | Value |
-|--------|-------|
-| **Best Model** | Ensemble |
-| **AUC-ROC** | 0.600 |
-| **Accuracy** | 64.1% |
-| **CV AUC-ROC** | 0.597 ± 0.007 |
-| **Samples** | 779 |
-| **Genes Analyzed** | 16,162 |
-| **Methylation Probes** | 122,401 |
-| **ClinVar Validation** | 99.93% |
+`expr_max` · `expr_mean` · `cna_methyl_correlation` · `expr_range` · `cna_expr_correlation`
 
----
+### 🏆 Top Prioritized Genes
 
-## 🧬 Top 10 Prioritized Genes
+**KRT81, NDUFA1, HSPG2, HTATSF1, WDR45, COX7B, HBS1L, DKC1, MORC4, DLC1**
 
-| Rank | Gene | FIS | Function |
-|------|------|-----|----------|
-| 1 | **KRT81** | 0.842 | Keratin 81 |
-| 2 | **NDUFA1** | 0.766 | Mitochondrial complex I |
-| 3 | **HSPG2** | 0.753 | Heparan sulfate proteoglycan |
-| 4 | **HTATSF1** | 0.751 | RNA processing |
-| 5 | **WDR45** | 0.749 | Autophagy |
-| 6 | **COX7B** | 0.746 | Cytochrome c oxidase |
-| 7 | **HBS1L** | 0.740 | Translation factor |
-| 8 | **DKC1** | 0.736 | Telomere maintenance |
-| 9 | **SEL1L3** | 0.731 | ERAD |
-| 10 | **MORC4** | 0.730 | Chromatin remodeling |
+## 🛠️ Tech Stack
 
----
+**Python · Pandas · NumPy · Scikit-learn · XGBoost · LightGBM · SHAP · Matplotlib · Streamlit · Lifelines**
 
 ## 📁 Project Structure
+
+```text
+breast-cancer-cna-prioritization/
+├── data/
+├── src/
+├── results/
+├── app.py
+├── main.py
+├── requirements.txt
+└── README.md
+```
+
+## 🚀 Run
+
+```bash
+git clone https://github.com/YOUR_USERNAME/breast-cancer-cna-prioritization.git
+cd breast-cancer-cna-prioritization
+pip install -r requirements.txt
+python main.py
+```
+
+To launch the dashboard:
+
+```bash
+streamlit run app.py
+```
+
+## 🔮 Future Work
+
+- External validation using METABRIC
+- Full methylation dataset integration
+- Pathway-level analysis
+- Deep-learning approaches
+- Experimental validation of prioritized candidates
+
+## 👩‍💻 Author
+
+**Sri Raaghavi R.K.**  
+B.Tech CSE – Artificial Intelligence
