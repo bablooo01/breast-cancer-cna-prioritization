@@ -1,20 +1,55 @@
-HP@Raagzzz MINGW64 /d/breast_cancer_cna_prioritization (master)
-$ git branch -M main
+# Explainable Multi-Omics CNA Prioritization in Breast Cancer
 
-HP@Raagzzz MINGW64 /d/breast_cancer_cna_prioritization (main)
-$ git remote add origin https://github.com/bablooo01/breast-cancer-cna-prioritization.git
+An integrated machine learning framework that combines **CNA**, **RNA-seq**, and **DNA methylation** data to prioritize functionally important copy number alterations in breast cancer.
 
-HP@Raagzzz MINGW64 /d/breast_cancer_cna_prioritization (main)
-$ git push -u origin main
-Enumerating objects: 42, done.
-Counting objects: 100% (42/42), done.
-Delta compression using up to 12 threads
-Compressing objects: 100% (40/40), done.
-Writing objects: 100% (42/42), 1.56 MiB | 692.00 KiB/s, done.
-Total 42 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (2/2), done.
-To https://github.com/bablooo01/breast-cancer-cna-prioritization.git
- * [new branch]      main -> main
-branch 'main' set up to track 'origin/main'.
+![Python](https://img.shields.io/badge/Python-3.9+-blue)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-orange)
+![SHAP](https://img.shields.io/badge/SHAP-0.42+-purple)
 
-HP@Raagzzz MINGW64 /d/breast_cancer_cna_p
+---
+
+## 🧬 What This Project Does
+
+Breast cancer genomes have thousands of copy number alterations (CNAs), but only some actually drive cancer. This framework:
+
+- Integrates **3 omics layers**: CNA + RNA-seq + Methylation
+- Engineers **42 features** from TCGA-BRCA data
+- Trains **4 ML models**: Random Forest, XGBoost, LightGBM, Ensemble
+- Generates a **Functional Importance Score (FIS)** for each gene
+- Explains predictions using **SHAP**
+
+---
+
+## 📊 Results at a Glance
+
+| Metric | Value |
+|--------|-------|
+| **Best Model** | Ensemble |
+| **AUC-ROC** | 0.600 |
+| **Accuracy** | 64.1% |
+| **CV AUC-ROC** | 0.597 ± 0.007 |
+| **Samples** | 779 |
+| **Genes Analyzed** | 16,162 |
+| **Methylation Probes** | 122,401 |
+| **ClinVar Validation** | 99.93% |
+
+---
+
+## 🧬 Top 10 Prioritized Genes
+
+| Rank | Gene | FIS | Function |
+|------|------|-----|----------|
+| 1 | **KRT81** | 0.842 | Keratin 81 |
+| 2 | **NDUFA1** | 0.766 | Mitochondrial complex I |
+| 3 | **HSPG2** | 0.753 | Heparan sulfate proteoglycan |
+| 4 | **HTATSF1** | 0.751 | RNA processing |
+| 5 | **WDR45** | 0.749 | Autophagy |
+| 6 | **COX7B** | 0.746 | Cytochrome c oxidase |
+| 7 | **HBS1L** | 0.740 | Translation factor |
+| 8 | **DKC1** | 0.736 | Telomere maintenance |
+| 9 | **SEL1L3** | 0.731 | ERAD |
+| 10 | **MORC4** | 0.730 | Chromatin remodeling |
+
+---
+
+## 📁 Project Structure
